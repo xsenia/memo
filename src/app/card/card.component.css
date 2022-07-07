@@ -1,0 +1,15 @@
+.xs-card {
+    width: 100px;
+}
+
+.xs-card-img {
+    max-width: 100%;
+}
+
+.open {
+    opacity: 1;
+}
+
+.close * {
+    opacity: .5;
+}
