@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CardsService } from '../cards.service';
 
 @Component({
   selector: 'app-place',
   templateUrl: './place.component.html',
   styleUrls: ['./place.component.css']
 })
-export class PlaceComponent implements OnInit {
-
-  public cards =  ["0C","0D","0H","0S","2C","2D","2H","2S","3C","3D","3H","3S","4C","4D","4H","4S","5C","5D","5H","5S","6C","6D","6H","6S","7C","7D","7H","7S","8C","8D","8H","8S","9C","9D","9H","9S","AC","AD","AH","AS","JC","JD","JH","JS","KC","KD","KH","KS","QC","QD","QH","QS"]; 
-  public isShown = false;
+export class PlaceComponent implements OnInit { 
   public users = [
     {name: 'Иван'},
     {name: 'Боб'},
@@ -17,16 +15,30 @@ export class PlaceComponent implements OnInit {
   public selectedUser: any;
   public selectedCard: any;
   public cardName: any;
+  public cards: any; //переменная для массива, полученного из сервиса  
+
+
+  // private _cardsService: any; //переменная для сервиса, он будет подключен в конструкторе  
+  // constructor(cardsServiceInnerVariable: CardsService) {
+  //   this._cardsService = cardsServiceInnerVariable;
+  // }
+  // это можно записать проще:
+  // constructor(private _cardsService: CardsService) {
+  // }
   
-
-  constructor() {  
+  constructor(private _cardsService: CardsService) {
   }
 
-  ngOnInit(): void {      
+  ngOnInit(): void { 
+    this.cards = this._cardsService.getCardsArray(5);
   }
 
-  alertFn(value: any) {
-    alert(value);
-  } 
+  public getAmount = (amount: any) => {
+    if (!amount) {
+      return;
+    }
+    this.cards = this._cardsService.getCardsArray(amount);
+  }
 
+  
 }

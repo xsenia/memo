@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
+import { CardsService } from './cards.service';
 import { PlaceComponent } from './place/place.component';
 import { UserCardComponent } from './user-card/user-card.component';
 
@@ -16,7 +17,7 @@ import { UserCardComponent } from './user-card/user-card.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [CardsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

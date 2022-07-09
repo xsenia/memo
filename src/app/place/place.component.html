@@ -1,18 +1,17 @@
 <h2>test - {{ selectedCard }}</h2>
 <div class="place">
-    <div class="card-wrap" *ngFor="let item of cards | slice: 0:6">
-        <app-card [cardName]="item" (cardSelected)="selectedCard = cardName"></app-card>
+    <div class="card-wrap" *ngFor="let item of cards">
+        {{ item.opened }}
+        <app-card [cardName]="item.name" (cardSelected)="selectedCard = item.name"></app-card>
     </div>    
 </div>
+
 <div>
-    <input type="text" #cardsCount>
-    <button (click)="alertFn(cardsCount.value)">Столько карточек!</button>
+    <input type="text" #cardsAmount>
+    <button (click)="getAmount(cardsAmount.value); cardsAmount.value = '';">Столько карточек!</button>
 </div>
 
-<button (click)="isShown = !isShown">Кликни, появится блок</button>
-<span *ngIf="isShown">Привет</span>
-
-<h3>{{ selectedUser?.name }}</h3>
-<div *ngFor="let user of users">
-    <app-user-card [user]="user" (userSelected)="selectedUser = user"></app-user-card>
+<h3>test2 - {{ selectedUser?.name }}</h3>
+<div *ngFor="let i of users">
+    <app-user-card [user]="i" (userSelected)="selectedUser = i"></app-user-card>
 </div>
